@@ -18,6 +18,9 @@ class AddressControllerTest extends WebTestCase
 	public function testGetOk()
 	{
 		$store = $this->getRandomStoreItem(true);
+		while($store->getAddresses()->count() == 0)//si la store no tiene direcciones, elijo otra
+			$store = $this->getRandomStoreItem(true);
+
 		$cep = $store->getAddresses()->get(random_int(0, $store->getAddresses()->count()-1))->getZip();
 
         $client = static::createClient();
@@ -28,6 +31,9 @@ class AddressControllerTest extends WebTestCase
 	public function testGetFail()
 	{
 		$store = $this->getRandomStoreItem(false);
+		while($store->getAddresses()->count() == 0)//si la store no tiene direcciones, elijo otra
+			$store = $this->getRandomStoreItem(false);
+
 		$cep = $store->getAddresses()->get(random_int(0, $store->getAddresses()->count()-1))->getZip();
 
         $client = static::createClient();
