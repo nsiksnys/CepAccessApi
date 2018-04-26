@@ -48,7 +48,7 @@ class State extends Territory
     public function toJson()
     {
         return [
-            "acronym" => $this->acronym;
+            "acronym" => $this->acronym
         ];
     }
 }

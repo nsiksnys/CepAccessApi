@@ -35,14 +35,6 @@ abstract class Territory
 	 */
 	protected $id;
 
-	/**
-	 * The territory parent
-	 *
-	 * @var Territory
-     * @ORM\OneToOne(targetEntity="Territory")
-	 */
-	protected $parent;
-
     /**
      * The territory name
      *
