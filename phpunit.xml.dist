@@ -10,14 +10,26 @@
          syntaxCheck="false"
          bootstrap="tests/bootstrap.php"
 >
+    <php>
+        <ini name="error_reporting" value="-1" />
+        <env name="KERNEL_CLASS" value="App\Kernel" />
+        <env name="APP_ENV" value="test" />
+        <env name="APP_DEBUG" value="1" />
+        <env name="SHELL_VERBOSITY" value="-1" />
+        <!-- define your env variables for the test env here -->
+        <env name="LOCALE" value="en" />
+        <env name="APP_SECRET" value="ThisTokenIsNotSoSecretChangeIt" />
+        <env name="DATABASE_URL" value="mysql://db_user:db_password@127.0.0.1:3306/db_name" />
+    </php>
+
     <testsuites>
         <testsuite name="TiendaNube Test Suite">
-            <directory>./tests/</directory>
+            <directory>./tests/TiendaNube/</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist>
-            <directory>./src</directory>
+            <directory>./src/TiendaNube</directory>
         </whitelist>
     </filter>
 </phpunit>
