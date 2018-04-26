@@ -6,10 +6,10 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
-class ClientControllerExceptionListener
+class AddressControllerExceptionListener
 {
     private $code = 500;
-    private $message = "Something went wrong!";
+    private $message = "Internal Server Error";
 
     public function __construct(LoggerInterface $logger)
     {
