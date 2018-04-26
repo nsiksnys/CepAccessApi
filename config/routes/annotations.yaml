@@ -1,0 +1,3 @@
+controllers:
+    resource: ../../src/TiendaNube/AddressBundle/Controller/
+    type: annotation
