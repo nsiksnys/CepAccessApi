@@ -22,17 +22,31 @@ class AddressRepository extends ServiceEntityRepository
      * Get an address by its zipcode (CEP)
      *
      * @param string $zip
+     * @param bool $isBeta
      * @return Collecion
      */
-    public function getAddressByZip(string $zip)
+    public function getAddressByZip(string $zip, bool $isBeta = false)
     {
         $this->logger->debug('Getting address for the zipcode [' . $zip . '] from database');
 
         return $this->createQueryBuilder('a')
                     ->from('AddressBundle:Address', 'a')
-                    ->where('a.zipcode = :zipcode')
+                    ->join('StoreBundle:Store', 's')
+                    ->where('a.zipcode = :zipcode', 's.betaTester = :is_beta')
                     ->setParameter('zipcode', $zip)
+                    ->setParameter('is_beta', $isBeta)
                     ->getQuery()
                     ->getResult();
+    }
+
+    /**
+     * Get a beta store address by its zipcode (CEP)
+     *
+     * @param string $zip
+     * @return Collecion
+     */
+    public function getBetaStoreAddressByZip(string $zip)
+    {
+        return $this->getAddressByZip($zip, true);
     }
 }

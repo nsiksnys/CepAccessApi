@@ -8,6 +8,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use App\TiendaNube\StoreBundle\Entity\Store;
 use App\TiendaNube\TerritoryBundle\Entity\City;
 use App\TiendaNube\TerritoryBundle\Entity\State;
 
@@ -101,12 +102,13 @@ class Address
     protected $state;
 
     /**
-     * The address beta tester status
+     * The store this address belongs to
      *
-     * @var bool
-     * @ORM\Column(type="boolean", nullable=false)
+     * @var Store
+     * 
+     * @ORM\OneToOne(targetEntity="App\TiendaNube\AddressBundle\Entity\Address")
      */
-    protected $betaTester = false;
+    protected $store;
 
     /**
      * @return int
@@ -189,21 +191,21 @@ class Address
     }
 
     /**
-     * @return bool
+     * @return \App\TiendaNube\StoreBundle\Entity\Store
      */
-    public function isBetaTester()
+    public function getStore()
     {
-        return $this->betaTester;
+        return $this->store;
     }
 
     /**
-     * @param bool $betaTester
+     * @param \App\TiendaNube\StoreBundle\Entity\Store $store
      *
      * @return this
      */
-    public function setBetaTester($betaTester)
+    public function setStore(Store $store)
     {
-        $this->betaTester = $betaTester;
+        $this->store = $store;
 
         return $this;
     }
