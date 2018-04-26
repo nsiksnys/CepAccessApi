@@ -21,6 +21,11 @@ class Store
     use TimestampableEntity;
     use SoftDeleteableEntity;
 
+    public function __construct()
+    {
+        $this->addresses = new ArrayCollection();
+    }
+
     /**
      * The address id
      *
@@ -62,9 +67,9 @@ class Store
      *
      * @var ArrayCollection
      * 
-     * @ORM\OneToMany(targetEntity="App\TiendaNube\AddressBundle\Entity\Address", mappedBy="stores", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\TiendaNube\AddressBundle\Entity\Address", mappedBy="store")
      */
-    protected $addresses = new ArrayCollection();
+    protected $addresses;
 
     /**
      * Get the current store ID
