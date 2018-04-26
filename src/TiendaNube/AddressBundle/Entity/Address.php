@@ -131,6 +131,106 @@ class Address
     }
 
     /**
+     * @return float
+     */
+    public function getAltitude()
+    {
+        return $this->altitude;
+    }
+
+    /**
+     * @param float $altitude
+     *
+     * @return this
+     */
+    public function setAltitude($altitude)
+    {
+        $this->altitude = $altitude;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZip()
+    {
+        return $this->zip;
+    }
+
+    /**
+     * @param string $zip
+     *
+     * @return this
+     */
+    public function setZip($zip)
+    {
+        $this->zip = $zip;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param float $latitude
+     *
+     * @return this
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param float $longitude
+     *
+     * @return this
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     *
+     * @return this
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getNeighborhood()
@@ -163,7 +263,7 @@ class Address
      *
      * @return this
      */
-    public function setCity(City $city)
+    public function setCity(\App\TiendaNube\TerritoryBundle\Entity\City $city)
     {
         $this->city = $city;
 
@@ -183,7 +283,7 @@ class Address
      *
      * @return this
      */
-    public function setState(State $state)
+    public function setState(\App\TiendaNube\TerritoryBundle\Entity\State $state)
     {
         $this->state = $state;
 
@@ -191,7 +291,7 @@ class Address
     }
 
     /**
-     * @return \App\TiendaNube\StoreBundle\Entity\Store
+     * @return Store
      */
     public function getStore()
     {
@@ -199,7 +299,7 @@ class Address
     }
 
     /**
-     * @param \App\TiendaNube\StoreBundle\Entity\Store $store
+     * @param Store $store
      *
      * @return this
      */
