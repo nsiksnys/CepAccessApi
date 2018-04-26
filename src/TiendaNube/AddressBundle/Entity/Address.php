@@ -89,7 +89,7 @@ class Address
      * The address city
      *
      * @var \App\TiendaNube\TerritoryBundle\Entity\City
-     * @ORM\OneToOne(targetEntity="\App\TiendaNube\TerritoryBundle\Entity\City")
+     * @ORM\ManyToOne(targetEntity="\App\TiendaNube\TerritoryBundle\Entity\City")
      */
     protected $city;
 
@@ -97,7 +97,7 @@ class Address
      * The address state
      *
      * @var \App\TiendaNube\TerritoryBundle\Entity\State
-     * @ORM\OneToOne(targetEntity="\App\TiendaNube\TerritoryBundle\Entity\State")
+     * @ORM\ManyToOne(targetEntity="\App\TiendaNube\TerritoryBundle\Entity\State")
      */
     protected $state;
 
@@ -106,7 +106,7 @@ class Address
      *
      * @var Store
      * 
-     * @ORM\OneToOne(targetEntity="App\TiendaNube\AddressBundle\Entity\Address")
+     * @ORM\ManyToOne(targetEntity="App\TiendaNube\StoreBundle\Entity\Store", inversedBy="addresses")
      */
     protected $store;
 
@@ -214,7 +214,7 @@ class Address
     {
         return [
             "altitude" => $this->altitude,
-            "zip" => $this->zip,
+            "cep" => $this->zip,
             "latitude" => $this->latitude,
             "longitude" => $this->longitude,
             "address" => $this->address,

@@ -1,20 +1,20 @@
 <?php
 
-namespace App\TiendaNube\AddressBundle\Repository;
+namespace App\TiendaNube\AddressBundle\Provider;
 
-use App\TiendaNube\AddressBundle\Entity\Address;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 
-class AddressRepository extends ServiceEntityRepository
+use App\TiendaNube\AddressBundle\Entity\Address;
+
+class AddressProvider
 {
     private $entityManager;
     private $logger;
 
-    public function __construct(RegistryInterface $registry, LoggerInterface $logger)
+    public function __construct(EntityManagerInterface $entityManager, LoggerInterface $logger)
     {
-        parent::__construct($registry, Address::class);
+        $this->entityManager = $entityManager;
         $this->logger = $logger;
     }
 
@@ -29,10 +29,12 @@ class AddressRepository extends ServiceEntityRepository
     {
         $this->logger->debug('Getting address for the zipcode [' . $zip . '] from database');
 
-        return $this->createQueryBuilder('a')
+        return $this->entityManager
+                    ->createQueryBuilder()
+                    ->select('a')
                     ->from('AddressBundle:Address', 'a')
                     ->join('StoreBundle:Store', 's')
-                    ->where('a.zipcode = :zipcode', 's.betaTester = :is_beta')
+                    ->where('a.zip = :zipcode', 's.betaTester = :is_beta')
                     ->setParameter('zipcode', $zip)
                     ->setParameter('is_beta', $isBeta)
                     ->getQuery()
