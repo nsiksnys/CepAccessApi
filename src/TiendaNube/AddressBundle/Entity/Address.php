@@ -207,4 +207,18 @@ class Address
 
         return $this;
     }
+
+    public function toJson()
+    {
+        return [
+            "altitude" => $this->altitude,
+            "zip" => $this->zip,
+            "latitude" => $this->latitude,
+            "longitude" => $this->longitude,
+            "address" => $this->address,
+            "neighborhood" => $this->neighborhood,
+            "city" => $this->city->toJson(),
+            "state" => $this->state->toJson()
+        ];
+    }
 }

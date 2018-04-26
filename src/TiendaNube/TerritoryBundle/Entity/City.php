@@ -29,15 +29,6 @@ class City extends Territory
      */
     protected $ibge;
 
-    /**
-     * The city name
-     * 
-     * @var string
-     * @ORM\Column(type="integer", nullable=false)
-     * @Assert\Type("string")
-     */
-    protected $name;
-
     public function getType()
     {
         return $this::TYPE_CITY;
@@ -83,23 +74,12 @@ class City extends Territory
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function toJson()
     {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
+        return [
+            "ddd" => $this->ddd,
+            "ibge" => $this->ibge,
+            "name" => $this->getName()
+        ];
     }
 }

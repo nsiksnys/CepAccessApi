@@ -44,6 +44,15 @@ abstract class Territory
 	protected $parent;
 
     /**
+     * The territory name
+     *
+     * @var string
+     * @ORM\Column(type="string", nullable=false)
+     * @Assert\Type("string")
+     */
+    protected $name;
+
+    /**
      * @return int
      */
     public function getId()
@@ -79,6 +88,26 @@ abstract class Territory
     public function setParent(Territory $parent)
     {
         $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
 
         return $this;
     }
