@@ -14,14 +14,14 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    App\TiendaNube\:
-        resource: '../src/TiendaNube/*Bundle/*'
-        exclude: '../src/TiendaNube/*Bundle/{Entity,Migrations,Tests,Kernel.php}'
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    App\TiendaNube\AddressBundle\Controller\:
-        resource: '../src/TiendaNube/AddressBundle/Controller'
+    App\Controller\:
+        resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
@@ -29,7 +29,7 @@ services:
 
     #custom exception listener
     client_controller.listener:
-        class: App\TiendaNube\AddressBundle\EventListener\AddressControllerExceptionListener
+        class: App\EventListener\AddressControllerExceptionListener
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
 

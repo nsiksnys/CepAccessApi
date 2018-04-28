@@ -1,6 +1,6 @@
 <?php
 
-namespace App\TiendaNube\StoreBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +9,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
-use App\TiendaNube\AddressBundle\Entity\Address;
+use App\Entity\Address;
 
 /**
  * @ORM\Entity
@@ -67,7 +67,7 @@ class Store
      *
      * @var ArrayCollection
      * 
-     * @ORM\OneToMany(targetEntity="App\TiendaNube\AddressBundle\Entity\Address", mappedBy="store")
+     * @ORM\OneToMany(targetEntity="App\Entity\Address", mappedBy="store")
      */
     protected $addresses;
 

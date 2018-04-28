@@ -1,11 +1,11 @@
 <?php
 
-namespace App\TiendaNube\AddressBundle\Provider;
+namespace App\Provider;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 
-use App\TiendaNube\AddressBundle\Entity\Address;
+use App\Entity\Address;
 
 class AddressProvider
 {
@@ -32,8 +32,8 @@ class AddressProvider
         return $this->entityManager
                     ->createQueryBuilder()
                     ->select('a')
-                    ->from('AddressBundle:Address', 'a')
-                    ->join('StoreBundle:Store', 's')
+                    ->from('App:Address', 'a')
+                    ->join('App:Store', 's')
                     ->where('a.zip = :zipcode', 's.betaTester = :is_beta')
                     ->setParameter('zipcode', $zip)
                     ->setParameter('is_beta', $isBeta)

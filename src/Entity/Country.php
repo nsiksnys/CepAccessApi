@@ -1,18 +1,18 @@
 <?php
 
-namespace App\TiendaNube\TerritoryBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="territory_state")
+ * @ORM\Table(name="territory_country")
  */
-class State extends Territory
+class Country extends Territory
 {
     /**
-     * The state acronym
+     * The country acronym
      *
      * @var string
      * @ORM\Column(type="string", nullable=false)
@@ -22,7 +22,7 @@ class State extends Territory
 
     public function getType()
     {
-        return $this::TYPE_STATE;
+        return $this::TYPE_COUNTRY;
     }
 
     /**
@@ -43,12 +43,5 @@ class State extends Territory
         $this->acronym = $acronym;
 
         return $this;
-    }
-
-    public function toJson()
-    {
-        return [
-            "acronym" => $this->acronym
-        ];
     }
 }

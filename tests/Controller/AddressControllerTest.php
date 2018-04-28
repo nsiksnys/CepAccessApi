@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\TiendaNube\AddressBundle\Controller;
+namespace App\Tests\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -52,7 +52,7 @@ class AddressControllerTest extends WebTestCase
         $query = $this->entityManager
                       ->createQueryBuilder()
                       ->select('s')
-                      ->from('StoreBundle:Store', 's')
+                      ->from('App:Store', 's')
                       ->where('s.betaTester = :is_beta')
                       ->setParameter('is_beta', $isBeta)
                       ->getQuery();

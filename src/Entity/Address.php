@@ -1,6 +1,6 @@
 <?php
 
-namespace App\TiendaNube\AddressBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -8,9 +8,9 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
-use App\TiendaNube\StoreBundle\Entity\Store;
-use App\TiendaNube\TerritoryBundle\Entity\City;
-use App\TiendaNube\TerritoryBundle\Entity\State;
+use App\Entity\Store;
+use App\Entity\City;
+use App\Entity\State;
 
 /**
  * @ORM\Entity
@@ -88,16 +88,16 @@ class Address
     /**
      * The address city
      *
-     * @var \App\TiendaNube\TerritoryBundle\Entity\City
-     * @ORM\ManyToOne(targetEntity="\App\TiendaNube\TerritoryBundle\Entity\City")
+     * @var \App\Entity\City
+     * @ORM\ManyToOne(targetEntity="\App\Entity\City")
      */
     protected $city;
 
     /**
      * The address state
      *
-     * @var \App\TiendaNube\TerritoryBundle\Entity\State
-     * @ORM\ManyToOne(targetEntity="\App\TiendaNube\TerritoryBundle\Entity\State")
+     * @var \App\Entity\State
+     * @ORM\ManyToOne(targetEntity="\App\Entity\State")
      */
     protected $state;
 
@@ -106,7 +106,7 @@ class Address
      *
      * @var Store
      * 
-     * @ORM\ManyToOne(targetEntity="App\TiendaNube\StoreBundle\Entity\Store", inversedBy="addresses")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Store", inversedBy="addresses")
      */
     protected $store;
 
@@ -251,7 +251,7 @@ class Address
     }
 
     /**
-     * @return \App\TiendaNube\TerritoryBundle\Entity\City
+     * @return \App\Entity\City
      */
     public function getCity()
     {
@@ -259,11 +259,11 @@ class Address
     }
 
     /**
-     * @param \App\TiendaNube\TerritoryBundle\Entity\City $city
+     * @param \App\Entity\City $city
      *
      * @return this
      */
-    public function setCity(\App\TiendaNube\TerritoryBundle\Entity\City $city)
+    public function setCity(\App\Entity\City $city)
     {
         $this->city = $city;
 
@@ -271,7 +271,7 @@ class Address
     }
 
     /**
-     * @return \App\TiendaNube\TerritoryBundle\Entity\State
+     * @return \App\Entity\State
      */
     public function getState()
     {
@@ -279,11 +279,11 @@ class Address
     }
 
     /**
-     * @param \App\TiendaNube\TerritoryBundle\Entity\State $state
+     * @param \App\Entity\State $state
      *
      * @return this
      */
-    public function setState(\App\TiendaNube\TerritoryBundle\Entity\State $state)
+    public function setState(\App\Entity\State $state)
     {
         $this->state = $state;
 

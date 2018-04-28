@@ -1,6 +1,6 @@
 <?php
 
-namespace App\TiendaNube\AddressBundle\EventListener;
+namespace App\EventListener;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
